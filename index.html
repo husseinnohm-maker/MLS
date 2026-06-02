@@ -1,83 +1,30 @@
-{
-  "name": "PalletEntry",
-  "type": "object",
-  "properties": {
-    "entry_date": {
-      "type": "string",
-      "format": "date",
-      "title": "Entry Date"
-    },
-    "region": {
-      "type": "string",
-      "title": "Region"
-    },
-    "warehouse": {
-      "type": "string",
-      "title": "Warehouse"
-    },
-    "room": {
-      "type": "string",
-      "title": "Room"
-    },
-    "temp_zone": {
-      "type": "string",
-      "title": "Temperature Zone"
-    },
-    "division": {
-      "type": "string",
-      "title": "Division/Client"
-    },
-    "staging_total": {
-      "type": "number",
-      "title": "Staging Pallets",
-      "default": 0
-    },
-    "staging_not_received": {
-      "type": "number",
-      "title": "Not Received from Inbound",
-      "default": 0
-    },
-    "staging_damage": {
-      "type": "number",
-      "title": "Damage (Staging)",
-      "default": 0
-    },
-    "staging_invoiced_waiting": {
-      "type": "number",
-      "title": "Invoiced & Waiting to Load",
-      "default": 0
-    },
-    "staging_returned": {
-      "type": "number",
-      "title": "Returned / Redelivery",
-      "default": 0
-    },
-    "staging_picked_waiting": {
-      "type": "number",
-      "title": "Picked & Waiting for Delivery",
-      "default": 0
-    },
-    "damage_pallets": {
-      "type": "number",
-      "title": "Damage Pallets",
-      "default": 0
-    },
-    "posm_pallets": {
-      "type": "number",
-      "title": "POSM Pallets",
-      "default": 0
-    },
-    "notes": {
-      "type": "string",
-      "title": "Notes"
-    }
-  },
-  "required": [
-    "entry_date",
-    "region",
-    "warehouse",
-    "room",
-    "temp_zone",
-    "division"
-  ]
-}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://db.com/logo_v2.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>MLS Dashboard</title>
+    <script>
+      // Provides the empty offline database structure your components look for
+      globalThis.__B44_DB__ = globalThis.__B44_DB__ || { 
+        auth: { isAuthenticated: async () => false, me: async () => null }, 
+        entities: new Proxy({}, { 
+          get: () => ({ 
+            filter: async () => [], 
+            get: async () => null, 
+            create: async () => ({}), 
+            update: async () => ({}), 
+            delete: async () => ({}) 
+          }) 
+        }), 
+        integrations: { Core: { UploadFile: async () => ({ file_url: '' }) } } 
+      };
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
